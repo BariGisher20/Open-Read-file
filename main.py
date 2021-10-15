@@ -23,3 +23,20 @@ def get_cook_book(file_name):
 pprint(get_cook_book('recipes.txt'))
 
 
+def get_shop_list_by_dishes(dishes, person_count):
+    guests_menu = []
+    guests_menu = get_cook_book('recipes.txt')[dishes]
+    menu = {}
+    # print(guests_menu)
+    for elements in guests_menu:
+        menu.setdefault(elements['Название ингридиента'], elements)
+        del elements['Название ингридиента']
+        a = int(elements['Количество'])
+        quantity = a * person_count
+        elements['Количество']=quantity
+    return menu
+
+
+pprint(get_shop_list_by_dishes('Омлет', 4))
+
+

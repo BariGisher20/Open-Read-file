@@ -1,24 +1,25 @@
 from pprint import pprint
 
+
 def get_cook_book(file_name):
-    cook_book=dict()
-    with open(file_name) as file:
+    cook_book = dict()
+    with open(file_name, "r", encoding="utf-8") as file:
         for line in file:
-            dish_name=line.strip()
-            counter=int(file.readline())
+            dish_name = line.strip()
+            counter = int(file.readline())
 
-            temp_list=[]
+            temp_list = []
+            cook_book[dish_name] = temp_list
             for item in range(counter):
-                ingredient_name, quantity, measure = file.readline().strip().split('|', ' ')
+                ingredient_name, quantity, measure = file.readline().split('|')
                 temp_list.append(
-                    {'Название ингридиента':ingredient_name, 'Количество': quantity, 'Ед. измерения': measure}
-                )
-                cook_book[dish_name]=temp_list
+                    {'Название ингридиента': ingredient_name, 'Количество': quantity, 'Ед. измерения': measure})
 
+            file.readline()
 
-                file.readline()
-                
     return cook_book
-            
+
+
 pprint(get_cook_book('recipes.txt'))
+
 

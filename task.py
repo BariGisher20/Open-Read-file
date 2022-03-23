@@ -22,7 +22,7 @@ def get_cook_book(file_name):
 
 cook_book = get_cook_book('recipes.txt')
 
-
+@decorator
 def get_shop_list_by_dishes(dishes, person_count, cook_book):
     menu = {}
     for dish in dishes:
